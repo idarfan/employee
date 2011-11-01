@@ -1,0 +1,27 @@
+<% title "New Order" %>  
+
+<% form_for @order do |f| %>  
+  <%= f.error_messages %>  
+  <h2>Shipping Information</h2>  
+  <p>  
+    <%= f.label :shipping_name %><br />  
+    <%= f.text_field :shipping_name %>  
+  </p>  
+  <h2>Billing Information</h2>  
+  <p>  
+    <%= f.label :billing_name %><br />  
+    <%= f.text_field :billing_name %>  
+  </p>  
+  <h2>Confirm Information</h2>  
+  <p>  
+    <strong>Shipping Name:</strong>  
+    <%= h @order.shipping_name %>  
+  </p>  
+  <p>  
+    <strong>Billing Name:</strong>  
+    <%= h @order.billing_name %>  
+  </p>  
+  <p><%= f.submit "Submit" %></p>  
+<% end %>  
+
+<p><%= link_to "Back to List", orders_path %></p>

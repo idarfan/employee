@@ -1,0 +1,21 @@
+<h1>Listing student_whylearnships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_whylearnships.each do |student_whylearnship| %>
+  <tr>
+    <td><%= link_to 'Show', student_whylearnship %></td>
+    <td><%= link_to 'Edit', edit_student_whylearnship_path(student_whylearnship) %></td>
+    <td><%= link_to 'Destroy', student_whylearnship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student whylearnship', new_student_whylearnship_path %>

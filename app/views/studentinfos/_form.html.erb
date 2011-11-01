@@ -1,0 +1,41 @@
+<%= form_for(@studentinfo) do |f| %>
+  <% if @studentinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@studentinfo.errors.count, "error") %> prohibited this studentinfo from being saved:</h2>
+
+      <ul>
+        <% @studentinfo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :whylearn, "請您勾選您學習英文的動機為何?" %><br />
+    <% @whylearns.each do |w| %>      
+      <%= check_box_tag "studentinfo[whylearn_ids][]", w.id, @studentinfo.whylearns.map(&:id).include?(w.id) %> <%= w.reason_desc %>
+    <% end %>   
+    <%= hidden_field_tag 'studentinfo[whylearn_ids][]','' %>   
+  </div>
+  <div class="field">
+    <%= f.label :whylearn_other, "請您輸入其他學習動機" %><br />
+    <%= f.text_field :whylearn_other %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mostneed, "請您勾選您最想加強的語言能力為何?" %><br />
+    <% @mostneeds.each do |m| %>      
+      <%= check_box_tag "studentinfo[mostneed_ids][]", m.id, @studentinfo.mostneeds.map(&:id).include?(m.id) %> <%= m.reason_desc %>
+    <% end %>   
+    <%= hidden_field_tag 'studentinfo[mostneed_ids][]','' %>   
+  </div>
+
+  <div class="field">
+    <%= f.label :mostneed_other, "請您輸入其他您最想加強的語言能力" %><br />
+    <%= f.text_field :mostneed_other %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

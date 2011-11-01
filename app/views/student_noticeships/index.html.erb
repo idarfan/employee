@@ -1,0 +1,21 @@
+<h1>Listing student_noticeships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_noticeships.each do |student_noticeship| %>
+  <tr>
+    <td><%= link_to 'Show', student_noticeship %></td>
+    <td><%= link_to 'Edit', edit_student_noticeship_path(student_noticeship) %></td>
+    <td><%= link_to 'Destroy', student_noticeship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student noticeship', new_student_noticeship_path %>

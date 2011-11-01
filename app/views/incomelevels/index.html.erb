@@ -1,0 +1,23 @@
+<h1>Listing incomelevels</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @incomelevels.each do |incomelevel| %>
+  <tr>
+    <td><%= incomelevel.reason_desc %></td>
+    <td><%= link_to 'Show', incomelevel %></td>
+    <td><%= link_to 'Edit', edit_incomelevel_path(incomelevel) %></td>
+    <td><%= link_to 'Destroy', incomelevel, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Incomelevel', new_incomelevel_path %>

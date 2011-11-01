@@ -1,0 +1,23 @@
+<h1>Listing beeeothers</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @beeeothers.each do |beeeother| %>
+  <tr>
+    <td><%= beeeother.reason_desc %></td>
+    <td><%= link_to 'Show', beeeother %></td>
+    <td><%= link_to 'Edit', edit_beeeother_path(beeeother) %></td>
+    <td><%= link_to 'Destroy', beeeother, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Beeeother', new_beeeother_path %>

@@ -1,0 +1,357 @@
+<% content_for :header do %>
+  <!-- 檔名為 new_view.html.erb  -->
+  <style>
+    .hidden{
+      display:none;
+    }
+    .goto_next_01 , .goto_next_02, .go_back_01, go_back_02 {
+      cursor:pointer;
+    }
+    .zebra_1{
+      background-color: #dddddd;
+      color: #3b679e;
+    }
+    .zebra_2{
+      background-color: #dddddd;
+      color: #a90329;
+    }
+    .zebraHover {
+      background-color: #FFFACD;
+    }
+    .zebraBoardhover {
+      border:inset 3px #e37c2d;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;   
+    }
+    .revealer
+    {
+      background-color: #FFFACD;
+      color: #a90329;
+    }
+    .spoiler{
+      background-color: #dddddd;
+      color: #a90329;
+    }
+
+    #news {
+      height: 400px;
+      width: 600px;
+      overflow: scroll;
+    }
+
+    span.scrolled {
+      background-color: red;
+    }
+    #navigation {
+      position: relative;
+      float: right;
+      width: 150px;
+    }
+    #content {
+      height: 2000px;
+    }
+    /* narrow the content to make room for floating nav */
+
+    #content p {
+      width: 450px;
+    }
+
+    #content h2 {
+      width: 460px;
+    }
+    .scroll-pane
+    {
+      width: 100%;
+      height: 200px;
+      overflow: auto;
+    }
+    .horizontal-only
+    {
+      height: auto;
+      max-height: 200px;
+    }
+    #fine_print {
+      height:50px;      
+      overflow:auto;
+      margin:0;
+    }
+  </style>
+  <script>
+    jQuery(function($){
+      
+      ///$(function() { alert('Ready to do your bidding!'); });      
+      //alert($(' #im_form input#student_name ').length + ' elements!');
+      //顯示元素的長度
+      //var fontSize = $('#im_form input').css('font-size');
+      //alert(fontSize);
+      //將表單的輸入背景色轉為灰色
+      //$('#im_form input').css('background-color','#dddddd');
+      //$('#im_form input').css('color', '#666666');
+      //上述那兩行是可以寫做一行的
+      // $('#im_form input').css({'background-color': '#dddddd', 'color': '#1e5799'}); 單行的寫法
+      //
+      //$('#im_form input').css({
+      // 'background-color': '#dddddd',
+      // 'color': '#1e5799',
+      // 'font-size': '14pt',
+      // 'line-height': '2.5em'
+      //})
+      //上面的是多行的寫法
+      $('#student_name').addClass('zebra_1');
+      $('#school_name').addClass('zebra_2');
+      //若要移除指的類別可以用底下的方法其中之一
+      //$('#im_form input.zebra_1').removeClass('zebra_1');      
+      //$('#im_form input#school_name.zebra_2').removeClass('zebra_2');
+      // $('#hideButton').click(function() {
+      //   $('#im_form input#student_name').hide();
+      // });
+      //指定隱藏input裏特定id的輸入項目
+      // $('#showButton').click(function() {
+      //    $('#im_form input#student_name').show();
+      //  });
+      //指定顯示input裏特定id的輸入項目          
+      // $('<p>這個是UI ,A new paragraph!</p>').addClass('zebra_1');
+      $('#no-script').remove();
+      //$('#disclaimer').remove(':contains("免責")'); //移除含有免責字串的html元素
+      //底下利用prependTo 方法及 appendTo 方法
+      // $('p').html('good bye, cruel paragraphs!'); 改變p 及 h2的方法,分別使用 .html 及 .text
+      //$('h2').text('All your titles are belong to us');
+      // $('p').html('<strong>Warning!</strong> 文字特效有作用且被置換了 Text has been replaced … ');
+      // $('h2').text('<strong>Warning!</strong> 文字特效沒作用Title elements can be …');
+      //alert($('h2:first').text()); 顯現 h2 的第一個元素
+      //toggle() 的用法
+      //$('<strong>START!</strong>').prependTo('#disclaimer'); 新增至免責聲明前的文字
+      //$('<strong>END!</strong>').appendTo('#disclaimer'); 新增至免責聲明後的文字
+      //$('#hideButton').click(function() {
+      //$('#disclaimer').fadeOut(); //把免責聲明淡出
+      //});
+      //$('#hideButton').click(function() {
+      //$('#disclaimer').slideToggle('slow', function() {
+      //alert('The slide has finished sliding!')
+      //});
+      //});
+      // $('#showme').hide().slideDown('slow').fadeIn();
+      // 設定 id 為showme的 p 
+      //
+      $('.scroll-pane').jScrollPane({
+        scrollbarWidth: 10,
+        scrollbarMargin: 10,
+        showArrows: false
+      });
+      //
+      $('#fine_print').jScrollPane({
+        scrollbarWidth: 10,
+        scrollbarMargin: 10,
+        showArrows: false
+      });
+      $('#news').scroll(function() {
+        $('#header')
+        .append('<span class="scrolled">You scrolled!</span>');
+      });
+      //捲動軸效果
+      // $(window).scroll(function() {
+      //  $('#navigation').css('top', $(document).scrollTop());
+      // });
+      //釘上浮動導覽列
+      $(window).scroll(function() {
+        $('#navigation')
+        .stop()
+        .animate({top: $(document).scrollTop()},'slow','easeOutBack');
+      });     
+      //改良式的浮動導覽列
+      $('#showme')
+      .effect('shake', {times:3}, 300)
+      .effect('highlight', {}, 3000)
+      .hide('explode', {}, 1000);
+      //使用jquery ui 讓 #showme 
+      //
+      //   $('#showme')
+      //   .hide()
+      // .slideDown('slow')
+      //.delay(2000)
+      //  .fadeIn();
+      // 設定 id 為showme的 p 
+
+      $('p:#testme').animate(
+      {
+        height: '+=100px',
+        backgroundColor: 'green'
+      },
+      {
+        duration: 'slow',
+        easing: 'swing',
+        complete: function() {alert('完成!');},
+        queue: false
+      }
+    );
+      //執行第id 為 test 的段落特效,使用參數及選項
+      $('p').animate({
+        padding: '20px',
+        borderBottom: '3px solid #8f8f8f',
+        borderRight: '3px solid #bfbfbf'
+      }, 2000);      
+      //給段落加上向右下滑動的特效
+      $('#tip_02 h3').click(function() {
+        $(this).next().animate(
+        //$(this).animate(
+        {'height':'toggle'}, 'slow', 'easeOutBounce'
+      );
+      });
+      //tip_02 分區裏的h3標題特效,原效果會收摺下一個元素被改成點擊自己即消失
+      $('#disclaimer').animate({
+        opacity: 'hide',
+        height: 'hide'
+      }, 8000 );
+      //讓免責聲明以動畫的型式消失
+      $('.spoiler').hide();
+      $('<span class="revealer">告訴我!</span>')
+      .insertBefore('.spoiler');
+      $('.revealer').click(function() {
+        $(this).hide();
+        $(this).next().fadeIn();
+      });
+      //猜題
+      $('span #student_name1_button').click(function() {
+        $(this).toggleClass('zebraHover');
+      });
+      //給span 透過點擊切換zebraBoardhover 類別效果
+      $('input').hover(function() {
+        $(this).addClass('zebraBoardhover');
+      }, function() {
+        $(this).removeClass('zebraBoardhover');
+      });
+      //給 input 加入滑鼠懸停時的效果
+      $('#hideButton').click(function() {
+        $('#disclaimer').slideUp('slow', function() {
+          $('#hideButton').fadeOut();
+        });
+      });
+      //給免責聲明隱藏(向上收摺的效果)
+      $('#disclaimer').hover(function() {
+        $(this).addClass('zebraHover');
+      }, function() {
+        $(this).removeClass('zebraHover');
+      });
+      //給免責聲明加入滑鼠懸停時的效果
+      $('<input type="button" value="toggle" id="toggleButton">')
+      //.insertAfter('#school_name');
+      .insertBefore('#school_name');
+      $('#toggleButton').click(function() {
+        $('#student_name').toggle();
+        if ($('#student_name').is(':visible')) {
+          $(this).val('隱藏學生姓名');
+        } else {
+          $(this).val('顯示學生姓名');
+        }
+      });      
+            
+      $(".date_picker").datepicker({              
+        showMonthAfterYear: true,
+        dateFormat : 'yy-mm-dd',
+        yearRange: '1928:2016',
+        changeMonth: true,
+        changeYear: true
+      }); 
+      
+      $(".goto_next_01").click(function(){
+        $("#from_student_name").html($("#student_name").attr("value")); //宣告表單內要使用的欄位名稱
+        $("#from_school_name").html($("#school_name").attr("value"));
+        $("#tip_01").addClass("hidden").siblings("#tip_02").removeClass("hidden");
+      })
+      
+      $(".go_back_01").click(function(){
+        $("#tip_02").addClass("hidden").siblings("#tip_01").removeClass("hidden");
+      })      
+      
+      $(".goto_next_02").click(function(){
+        $("#tip_02").addClass("hidden").siblings("#tip_03").removeClass("hidden");
+      })
+      
+      $(".go_back_02").click(function(){
+        $("#tip_03").addClass("hidden").siblings("#tip_02").removeClass("hidden");
+      })
+      
+      $("#im_form").submit(function(){
+        if($("#tip_03").hasClass("hidden")){
+          return false;
+        }
+        if(!$(".click_me_yoo").attr("checked")){
+          alert("請確認您在自由且清醒的意志下同意簽此契約!");
+          return false;
+        }
+      })
+    })  
+  </script>
+<% end %>
+
+<form action="/students" id="im_form" method="post"> 
+  <p id="no-script">
+    我們建議您開啟 JavaScript 以達到瀏覽本網站的最佳效果!
+  </p> 
+  <div id="navigation" style="top: 0px;">
+    跟著跑
+  </div>
+  <!-- 步驟一是也 -->
+  <div id="tip_01">
+    <P>
+      誰是科見美語的大老闆?
+      <span class="spoiler" style="display: none;"> 候登見! </span>             
+    </p>
+    <!--<p id="testme">這裏是忠孝復興分校</p> -->
+    <p id="showme">首席程式設計師</p>
+    <!-- <input type="button" id="toggleButton" value="隱藏學生姓名" />
+     <br />
+    -->
+    <div id="disclaimer">
+      <h2>歡迎光臨</h2>
+      免責聲明
+      <input type="button" id="hideButton" value="免責聲明" />
+    </div> 
+    <span class="" id="student_name1">學生姓名</span>  
+    <input name="student_name" id="student_name" type="text"/>
+    <br />
+    <span class="">就讀學校</span>  
+    <input name="school_name" id="school_name" type="text"/>
+    <br />
+    <!-- <img class="goto_next_01" src="http://dl.dropbox.com/u/757630/shared/littlebarts_s.jpg"/> -->   
+    <input class="goto_next_01" type="button" value="前往步驟二"/>
+  </div>
+  <!-- 步驟二是也 -->
+  <div id="tip_02" class="hidden"><!--第二分區,預設為隱藏  -->
+    <h3>這是一段特效文字</h3>
+    您輸入的姓名是: <span id="from_student_name"></span>
+    <br />
+    您輸入的學校是: <span id="from_school_name"></span>
+    <br />    
+    <input class="go_back_01" type="button" value="返回步驟一"/>    
+    <input class="goto_next_02" type="button" value="前往步驟三"/>    
+  </div>
+  <!-- 步驟三是也 -->
+  <div id="tip_03" class="hidden"><!--第三分區,預設為隱藏  -->
+    <input class="go_back_02" type="button" value="返回步驟二"/>
+    <br />
+    <div id="header"></div>
+    <div id="news">
+      民進黨立委管碧玲爆料指羅世雄也有非法農舍。羅世雄今天(10月20日)公開說明，他表示，請辭是為全心投入立委選戰，跟管碧玲的「烏龍爆料」無關。羅世雄說，鐵皮屋是妻子娘家所有，他會建議岳父要做到完全合法，「該拆就拆，該補稅就補稅」。(林憲源報導)
+      管碧玲爆料指控，羅世雄請辭南服中心執行長，外界質疑是否為了止住爭議而閃電辭職。羅世雄說，他早在十月十一日就遞出辭呈，也在十月十三日獲得行政院長吳敦義同意，請辭是為了全心投入立委選戰，也早在爆料之前就提出，跟之前的「烏龍爆料」事件無關。
+      對於管碧玲所指台南關廟的違建鐵皮屋，羅世雄說那是屬於妻子娘家所有，土地是由妻子呂綺修繼承，是建地不是農地，房屋則是由呂綺修的妹妹繼承，目前都是由呂的父親在管理，每年都有繳房屋稅跟地價稅。羅世雄說他將向岳父建議，修正到完全合法為止，採取高道德標準，「該拆就拆，該補稅就補稅，該補申報就補申報」。
+      羅世雄將代表國民黨參選高雄市第五選區(旗津鼓山鹽埕)立委，他的競爭對手就是指控他的民進黨籍立委管碧玲。
+
+      民進黨立委管碧玲爆料指羅世雄也有非法農舍。羅世雄今天(10月20日)公開說明，他表示，請辭是為全心投入立委選戰，跟管碧玲的「烏龍爆料」無關。羅世雄說，鐵皮屋是妻子娘家所有，他會建議岳父要做到完全合法，「該拆就拆，該補稅就補稅」。(林憲源報導)
+      管碧玲爆料指控，羅世雄請辭南服中心執行長，外界質疑是否為了止住爭議而閃電辭職。羅世雄說，他早在十月十一日就遞出辭呈，也在十月十三日獲得行政院長吳敦義同意，請辭是為了全心投入立委選戰，也早在爆料之前就提出，跟之前的「烏龍爆料」事件無關。
+      對於管碧玲所指台南關廟的違建鐵皮屋，羅世雄說那是屬於妻子娘家所有，土地是由妻子呂綺修繼承，是建地不是農地，房屋則是由呂綺修的妹妹繼承，目前都是由呂的父親在管理，每年都有繳房屋稅跟地價稅。羅世雄說他將向岳父建議，修正到完全合法為止，採取高道德標準，「該拆就拆，該補稅就補稅，該補申報就補申報」。
+      羅世雄將代表國民黨參選高雄市第五選區(旗津鼓山鹽埕)立委，他的競爭對手就是指控他的民進黨籍立委管碧玲。
+    </div>
+    <p class="scroll-pane">
+      民進黨立委管碧玲爆料指羅世雄也有非法農舍。羅世雄今天(10月20日)公開說明，他表示，請辭是為全心投入立委選戰，跟管碧玲的「烏龍爆料」無關。羅世雄說，鐵皮屋是妻子娘家所有，他會建議岳父要做到完全合法，「該拆就拆，該補稅就補稅」。(林憲源報導)
+      管碧玲爆料指控，羅世雄請辭南服中心執行長，外界質疑是否為了止住爭議而閃電辭職。羅世雄說，他早在十月十一日就遞出辭呈，也在十月十三日獲得行政院長吳敦義同意，請辭是為了全心投入立委選戰，也早在爆料之前就提出，跟之前的「烏龍爆料」事件無關。
+      對於管碧玲所指台南關廟的違建鐵皮屋，羅世雄說那是屬於妻子娘家所有，土地是由妻子呂綺修繼承，是建地不是農地，房屋則是由呂綺修的妹妹繼承，目前都是由呂的父親在管理，每年都有繳房屋稅跟地價稅。羅世雄說他將向岳父建議，修正到完全合法為止，採取高道德標準，「該拆就拆，該補稅就補稅，該補申報就補申報」。
+      羅世雄將代表國民黨參選高雄市第五選區(旗津鼓山鹽埕)立委，他的競爭對手就是指控他的民進黨籍立委管碧玲。       
+    </p>
+
+    <input name="click_me_yoo" type="checkbox" class="click_me_yoo"/>您同意上述資料皆出自您個人自由意志,可做為呈堂證供
+    <br />
+    <input type="submit" value="送出資料" />
+  </div>
+</form>

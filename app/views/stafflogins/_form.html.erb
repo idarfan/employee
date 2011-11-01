@@ -1,0 +1,29 @@
+<%= form_for(@stafflogin) do |f| %>
+  <% if @stafflogin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stafflogin.errors.count, "error") %> prohibited this stafflogin from being saved:</h2>
+
+      <ul>
+      <% @stafflogin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

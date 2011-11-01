@@ -1,0 +1,78 @@
+<% content_for :header do %>
+  <!-- 檔名為 new_view.html.erb  -->
+  <style>
+    .hidden{
+      display:none;
+    }
+    .goto_next_01 , .goto_next_02, .go_back_01, go_back_02 {
+      cursor:pointer;
+    }
+    .zebra_1{
+      background-color: #dddddd;
+      color: #3b679e;
+    }
+    .zebra_2{
+      background-color: #dddddd;
+      color: #a90329;
+    }
+    .zebraHover {
+      background-color: #FFFACD;
+    }
+    .zebraBoardhover {
+      border:inset 3px #e37c2d;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;   
+    }
+    .revealer
+    {
+      background-color: #FFFACD;
+      color: #a90329;
+    }
+    .spoiler{
+      background-color: #dddddd;
+      color: #a90329;
+    }
+
+  </style>
+<script>
+    jQuery(function($){
+ $('<div id="navigation_blob"></div>').css({
+        width: $('#navigation li:first a').width() + 10,
+        height: $('#navigation li:first a').height() + 10
+      }).appendTo('#navigation');
+      //導覽列
+      $('#navigation_blob').animate(
+      {width: $(this).width() + 10, left: $(this).position().left},
+      {duration: 'slow', easing: 'easeOutElastic', queue: false}
+    );
+      // Mouse over function
+      // Mouse out function
+      $('#navigation_blob')
+      .stop(true)
+      .animate(
+      {width: 'hide'},
+      {duration: 'slow', easing: 'easeOutCirc', queue: false}
+    )
+      .animate(
+      {left: $('#navigation li:first a').position().left},
+      'fast'
+    );
+  //以上是導覽列的效果
+    });
+<% end %>
+
+<html>
+<head>
+<ul id="navigation">
+<li><a href="#">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Buy!</a></li>
+<li><a href="#">Gift Ideas</a></li>
+</ul>
+</head>
+<body>
+
+
+  
+<%= "new_view1" %>

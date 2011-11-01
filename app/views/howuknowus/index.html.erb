@@ -1,0 +1,23 @@
+<h1>Listing howuknowus</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @howuknowus.each do |howuknowu| %>
+  <tr>
+    <td><%= howuknowu.reason_desc %></td>
+    <td><%= link_to 'Show', howuknowu %></td>
+    <td><%= link_to 'Edit', edit_howuknowu_path(howuknowu) %></td>
+    <td><%= link_to 'Destroy', howuknowu, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Howuknowu', new_howuknowu_path %>

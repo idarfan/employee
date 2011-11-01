@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  studentinfo_id: 1
+  cname: MyString
+  ename: MyString
+  birthday: 2011-09-28
+  gender: MyString
+  address: MyString
+  telephone: MyString
+  mobile_phone: MyString
+  school: MyString
+  sales: MyString
+  introduce: MyString
+
+two:
+  studentinfo_id: 1
+  cname: MyString
+  ename: MyString
+  birthday: 2011-09-28
+  gender: MyString
+  address: MyString
+  telephone: MyString
+  mobile_phone: MyString
+  school: MyString
+  sales: MyString
+  introduce: MyString

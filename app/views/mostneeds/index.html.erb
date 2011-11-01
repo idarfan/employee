@@ -1,0 +1,23 @@
+<h1>Listing mostneeds</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostneeds.each do |mostneed| %>
+  <tr>
+    <td><%= mostneed.reason_desc %></td>
+    <td><%= link_to 'Show', mostneed %></td>
+    <td><%= link_to 'Edit', edit_mostneed_path(mostneed) %></td>
+    <td><%= link_to 'Destroy', mostneed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostneed', new_mostneed_path %>

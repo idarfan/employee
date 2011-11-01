@@ -1,0 +1,23 @@
+<h1>Listing weeklyusages</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @weeklyusages.each do |weeklyusage| %>
+  <tr>
+    <td><%= weeklyusage.reason_desc %></td>
+    <td><%= link_to 'Show', weeklyusage %></td>
+    <td><%= link_to 'Edit', edit_weeklyusage_path(weeklyusage) %></td>
+    <td><%= link_to 'Destroy', weeklyusage, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Weeklyusage', new_weeklyusage_path %>

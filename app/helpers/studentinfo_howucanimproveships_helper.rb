@@ -1,0 +1,2 @@
+module StudentinfoHowucanimproveshipsHelper
+end

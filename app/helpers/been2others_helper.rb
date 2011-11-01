@@ -1,0 +1,2 @@
+module Been2othersHelper
+end

@@ -1,0 +1,43 @@
+<h1>Listing studentinfofronts</h1>
+
+<table>
+  <tr>
+    <th>Studentinfo</th>
+    <th>Cname</th>
+    <th>Ename</th>
+    <th>Birthday</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Telephone</th>
+    <th>Mobile phone</th>
+    <th>School</th>
+    <th>Sales</th>
+    <th>Introduce</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @studentinfofronts.each do |studentinfofront| %>
+  <tr>
+    <td><%= studentinfofront.studentinfofront_id %></td>
+    <td><%= studentinfofront.cname %></td>
+    <td><%= studentinfofront.ename %></td>
+    <td><%= studentinfofront.birthday %></td>
+    <td><%= studentinfofront.gender %></td>
+    <td><%= studentinfofront.address %></td>
+    <td><%= studentinfofront.telephone %></td>
+    <td><%= studentinfofront.mobile_phone %></td>
+    <td><%= studentinfofront.school %></td>
+    <td><%= studentinfofront.sales %></td>
+    <td><%= studentinfofront.introduce %></td>
+    <td><%= link_to 'Show', studentinfofront %></td>
+    <td><%= link_to 'Edit', edit_studentinfofront_path(studentinfofront) %></td>
+    <td><%= link_to 'Destroy', studentinfofront, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Studentinfofront', new_studentinfofront_path %>

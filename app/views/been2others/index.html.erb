@@ -1,0 +1,23 @@
+<h1>Listing been2others</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @been2others.each do |been2other| %>
+  <tr>
+    <td><%= been2other.reason_desc %></td>
+    <td><%= link_to 'Show', been2other %></td>
+    <td><%= link_to 'Edit', edit_been2other_path(been2other) %></td>
+    <td><%= link_to 'Destroy', been2other, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Been2other', new_been2other_path %>

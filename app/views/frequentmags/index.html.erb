@@ -1,0 +1,23 @@
+<h1>Listing frequentmags</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @frequentmags.each do |frequentmag| %>
+  <tr>
+    <td><%= frequentmag.reason_desc %></td>
+    <td><%= link_to 'Show', frequentmag %></td>
+    <td><%= link_to 'Edit', edit_frequentmag_path(frequentmag) %></td>
+    <td><%= link_to 'Destroy', frequentmag, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Frequentmag', new_frequentmag_path %>

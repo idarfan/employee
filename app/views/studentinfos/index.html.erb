@@ -1,0 +1,23 @@
+<h1>Listing studentinfos</h1>
+
+<table>
+  <tr>
+    <th>Whylearn other</th>    
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @studentinfos.each do |studentinfo| %>
+  <tr>
+    <td><%= studentinfo.whylearn_other %></td>  
+    <td><%= link_to 'Show', studentinfo %></td>
+    <td><%= link_to 'Edit', edit_studentinfo_path(studentinfo) %></td>
+    <td><%= link_to 'Destroy', studentinfo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Studentinfo', new_studentinfo_path %>

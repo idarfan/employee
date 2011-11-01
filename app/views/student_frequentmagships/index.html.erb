@@ -1,0 +1,21 @@
+<h1>Listing student_frequentmagships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_frequentmagships.each do |student_frequentmagship| %>
+  <tr>
+    <td><%= link_to 'Show', student_frequentmagship %></td>
+    <td><%= link_to 'Edit', edit_student_frequentmagship_path(student_frequentmagship) %></td>
+    <td><%= link_to 'Destroy', student_frequentmagship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student frequentmagship', new_student_frequentmagship_path %>

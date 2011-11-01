@@ -1,0 +1,21 @@
+<h1>Listing student_been2otherships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_been2otherships.each do |student_been2othership| %>
+  <tr>
+    <td><%= link_to 'Show', student_been2othership %></td>
+    <td><%= link_to 'Edit', edit_student_been2othership_path(student_been2othership) %></td>
+    <td><%= link_to 'Destroy', student_been2othership, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student been2othership', new_student_been2othership_path %>

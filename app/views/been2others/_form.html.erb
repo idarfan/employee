@@ -1,0 +1,21 @@
+<%= form_for(@been2other) do |f| %>
+  <% if @been2other.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@been2other.errors.count, "error") %> prohibited this been2other from being saved:</h2>
+
+      <ul>
+      <% @been2other.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reason_desc %><br />
+    <%= f.text_field :reason_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

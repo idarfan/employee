@@ -1,0 +1,21 @@
+<h1>Listing student_weeklyusageships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_weeklyusageships.each do |student_weeklyusageship| %>
+  <tr>
+    <td><%= link_to 'Show', student_weeklyusageship %></td>
+    <td><%= link_to 'Edit', edit_student_weeklyusageship_path(student_weeklyusageship) %></td>
+    <td><%= link_to 'Destroy', student_weeklyusageship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student weeklyusageship', new_student_weeklyusageship_path %>

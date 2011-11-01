@@ -1,0 +1,21 @@
+<h1>Listing student_mostimportchoiceships</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @student_mostimportchoiceships.each do |student_mostimportchoiceship| %>
+  <tr>
+    <td><%= link_to 'Show', student_mostimportchoiceship %></td>
+    <td><%= link_to 'Edit', edit_student_mostimportchoiceship_path(student_mostimportchoiceship) %></td>
+    <td><%= link_to 'Destroy', student_mostimportchoiceship, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student mostimportchoiceship', new_student_mostimportchoiceship_path %>

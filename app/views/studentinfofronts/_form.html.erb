@@ -1,0 +1,65 @@
+<%= form_for(@studentinfofront) do |f| %>
+  <% if @studentinfofront.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@studentinfofront.errors.count, "error") %> prohibited this studentinfofront from being saved:</h2>
+
+      <ul>
+      <% @studentinfofront.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :studentinfofront_id, "請輸入學籍號碼" %><br />
+    <%= f.text_field :studentinfofront_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cname %><br />
+    <%= f.text_field :cname %>
+  </div>
+  <div class="field">
+    <%= f.label :ename %><br />
+    <%= f.text_field :ename %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :gender, "性別" %><br />
+    <%=  f.select :gender, [ ["男", "M"], ["女", "F"] ] %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "電子郵件" %><br />
+    <%= f.text_field :email %>
+  </div>  
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone %><br />
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone %><br />
+    <%= f.text_field :mobile_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :sales %><br />
+    <%= f.text_field :sales %>
+  </div>
+  <div class="field">
+    <%= f.label :introduce %><br />
+    <%= f.text_field :introduce %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

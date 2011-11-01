@@ -1,0 +1,2 @@
+module StudentHowcanimproveshipsHelper
+end

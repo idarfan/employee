@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Student:</b>
+  <%= @student.student_id %>
+</p>
+
+<p>
+  <b>Cname:</b>
+  <%= @student.cname %>
+</p>
+
+<p>
+  <b>Ename:</b>
+  <%= @student.ename %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @student.birthday %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @student.gender %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @student.email %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= area_name(@student) %><%= @student.road_name %><%= @student.address %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @student.telephone %>
+</p>
+
+<p>
+  <b>Mobile phone:</b>
+  <%= @student.mobile_phone %>
+</p>
+
+<p>
+  <b>Sales:</b>
+  <%= @student.sales %>
+</p>
+
+<p>
+  <b>Introduce:</b>
+  <%= @student.introduce %>
+</p>
+
+<p>
+  <b>請輸入您學習英文動機的其他理由:</b>
+  <%= @student.whylearn_other %>
+</p>
+
+<p>
+  <b>請輸入您曾在其他地方有參加的英文進修課程:</b>
+  <%= @student.been2other_other %>
+</p>
+<p>
+  <b>請您勾選您最想加強的語言能力:</b>
+  <%= @student.mostneed_other %>
+</p>
+<p>
+  <b>您覺得要如何才能學好英文?:</b>
+  <%= @student.howcanimprove_other %>
+</p>
+<p>
+  <b>請輸入選擇語言中心時,其他的您認為最重要的</b>
+  <%= @student.mostimportchoice_other %>
+</p>
+
+<p>
+  <b>您經常閱讀那些雜誌或瀏覽那些網站</b>
+  <%= @student.frequentmag_other %>
+</p>
+
+<p>
+  <b>您是經由什麼管道知道我們的</b>
+  <%= @student.howuknowus_other %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

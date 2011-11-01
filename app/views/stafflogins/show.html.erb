@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @stafflogin.name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @stafflogin.password %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @stafflogin.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_stafflogin_path(@stafflogin) %> |
+<%= link_to 'Back', stafflogins_path %>

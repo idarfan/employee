@@ -1,0 +1,23 @@
+<h1>Listing howcanimproves</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @howcanimproves.each do |howcanimprofe| %>
+  <tr>
+    <td><%= howcanimprofe.reason_desc %></td>
+    <td><%= link_to 'Show', howcanimprofe %></td>
+    <td><%= link_to 'Edit', edit_howcanimprofe_path(howcanimprofe) %></td>
+    <td><%= link_to 'Destroy', howcanimprofe, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Howcanimprove', new_howcanimprofe_path %>

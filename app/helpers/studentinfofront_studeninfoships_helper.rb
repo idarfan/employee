@@ -1,0 +1,2 @@
+module StudentinfofrontStudeninfoshipsHelper
+end

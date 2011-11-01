@@ -1,0 +1,33 @@
+<h3>列出學生清單</h3>
+<table>
+  <tr>
+    <th>Student ID</th>
+    <th>中文姓名</th>
+    <th>英文名字</th>
+    <th>生日</th>
+    <th>性別</th>   
+  </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.student_id %></td>
+      <td><%= student.cname %></td>
+      <td><%= student.ename %></td>
+      <td><%= student.birthday %></td>
+      <td><%= student.gender %></td>
+      <td><%= link_to 'Show', student %></td>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
+      <td><%= link_to 'Delete', student, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<!--
+
+<form src="." method="post"/>
+  <input name="start_at" type="text"/>開始日
+  <input name="end_at" type="text"/>結束日
+  <input type="submit" value="送出"/>
+</form>
+-->
+<%= will_paginate @students %>
+<%= link_to '輸入新學員資料', new_student_path %>

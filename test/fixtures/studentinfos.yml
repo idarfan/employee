@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  whylearn_other: MyString
+  beentoother_other: MyString
+
+two:
+  whylearn_other: MyString
+  beentoother_other: MyString

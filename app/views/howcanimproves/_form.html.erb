@@ -1,0 +1,21 @@
+<%= form_for(@howcanimprofe) do |f| %>
+  <% if @howcanimprofe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@howcanimprofe.errors.count, "error") %> prohibited this howcanimprofe from being saved:</h2>
+
+      <ul>
+      <% @howcanimprofe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reason_desc %><br />
+    <%= f.text_field :reason_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

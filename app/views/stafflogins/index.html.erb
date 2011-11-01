@@ -1,0 +1,33 @@
+<% if current_user %>
+HiHi!! : <%= current_user.name %>
+<% else %>
+請登入
+<% end %>
+
+<h1>Listing stafflogins</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Password</th>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stafflogins.each do |stafflogin| %>
+  <tr>
+    <td><%= stafflogin.name %></td>
+    <td><%= stafflogin.password %></td>
+    <td><%= stafflogin.level %></td>
+    <td><%= link_to 'Show', stafflogin %></td>
+    <td><%= link_to 'Edit', edit_stafflogin_path(stafflogin) %></td>
+    <td><%= link_to 'Destroy', stafflogin, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stafflogin', new_stafflogin_path %>
