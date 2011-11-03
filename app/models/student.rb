@@ -123,7 +123,7 @@ class Student < ActiveRecord::Base
   validates :gender,  :presence => true
   #性別不能不填			  
   validates :address,  :presence => true, 
-    :length => {:minimum => 5, :maximum => 254}  
+    :length => {:minimum => 2, :maximum => 254}  
 				  
   validates :telephone, :length => {:minimum => 3, :maximum => 254}
   #電話欄位可以空白				  
