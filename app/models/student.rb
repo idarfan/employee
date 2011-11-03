@@ -151,7 +151,7 @@ class Student < ActiveRecord::Base
   validates :gender,  :presence => { :message => "姓別欄位不能空白" }
   #驗證姓別
   validates :address,  :presence => { :message => "住址欄位不能空白" }, 
-    :length => {:minimum => 3, :maximum => 254, :message => "住址欄位長度不正確" }
+    :length => {:minimum => 2, :maximum => 254, :message => "住址欄位長度不正確" }
   #驗證住址
   validates :telephone, :length => {:minimum => 3, :maximum => 14, :message => "電話欄位長度不正確" }
   #驗證電話
