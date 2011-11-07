@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012060632) do
+ActiveRecord::Schema.define(:version => 20111107070210) do
 
   create_table "been2others", :force => true do |t|
     t.string   "reason_desc"
@@ -256,7 +256,7 @@ ActiveRecord::Schema.define(:version => 20111012060632) do
   add_index "student_whylearnships", ["whylearn_id"], :name => "whylearn_id"
 
   create_table "students", :force => true do |t|
-    t.integer  "student_id"
+    t.string   "student_id"
     t.string   "cname",                                               :null => false
     t.string   "ename"
     t.date     "birthday"

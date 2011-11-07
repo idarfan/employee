@@ -14,6 +14,17 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.xml
   def show
+    @graduateds = Graduated.all
+    @notices = Notice.all
+    @been2others = Been2other.all
+    @incomelevels = Incomelevel.all
+    @mostneeds = Mostneed.all
+    @howuknowus = Howuknowu.all
+    @howcanimproves = Howcanimprove.all
+    @frequentmags = Frequentmag.all
+    @weeklyusages = Weeklyusage.all
+    @mostimportchoices = Mostimportchoice.all    
+    @whylearns = Whylearn.all
     @student = Student.find(params[:id])
 
     respond_to do |format|
