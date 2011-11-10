@@ -41,6 +41,9 @@ class Student < ActiveRecord::Base
   has_many :student_graduatedship, :dependent => :destroy
   has_many :graduated, :through => :student_graduatedship
   #您是何學歷
+  has_many :student_regedship, :dependent => :destroy
+  has_many :reged, :through => :student_regedship
+  #是否註冊上課
   #加入條件檢查式
   validate  :check_whylearn #檢查學習英文動機是否有勾選否則請填寫其它欄位
   validate :check_been2other #檢查有否在其他地方學習英文

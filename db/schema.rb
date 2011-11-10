@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107070210) do
+ActiveRecord::Schema.define(:version => 20111110032609) do
 
   create_table "been2others", :force => true do |t|
     t.string   "reason_desc"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20111107070210) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "fortest", :force => true do |t|
+    t.string "reason_desc", :null => false
   end
 
   create_table "frequentmags", :force => true do |t|
@@ -120,6 +124,12 @@ ActiveRecord::Schema.define(:version => 20111107070210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "sales_name"
+  end
+
+  create_table "regeds", :force => true do |t|
+    t.string   "reason_desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stafflogins", :force => true do |t|
@@ -235,6 +245,15 @@ ActiveRecord::Schema.define(:version => 20111107070210) do
 
   add_index "student_noticeships", ["student_id", "notice_id"], :name => "student_id_notice_id", :unique => true
 
+  create_table "student_regedships", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "student_id"
+    t.integer  "reged_id"
+  end
+
+  add_index "student_regedships", ["student_id", "reged_id"], :name => "student_id_reged_id", :unique => true
+
   create_table "student_weeklyusageships", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -282,6 +301,7 @@ ActiveRecord::Schema.define(:version => 20111107070210) do
     t.integer  "sub_area",               :limit => 1
     t.string   "road_name",                           :default => ""
     t.string   "graduated_other"
+    t.integer  "reged"
   end
 
   create_table "tb_log", :primary_key => "pk_log", :force => true do |t|

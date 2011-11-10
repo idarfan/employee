@@ -363,9 +363,16 @@
     </div>
   </div>
   <div class="centerline">
-    <div class="field">
+    <div class="field1">
       <%= f.label :keytime, "24.請輸入資料建檔日期" %><br />
       <%= f.text_field :keytime, :class=>"date_picker" %>  
+    </div>
+    <div class="field2">
+      <%= f.label :reged, "25.請輸入是否完成註冊登記" %><br />
+      <% @regeds.each do |reg| %> 
+        <%= radio_button_tag "student[reged_ids][]",reg.id, @student.reged.map(&:id).include?(reg.id) %> <%= reg.reason_desc %>
+      <% end %> 
+      <%= hidden_field_tag 'student[reged_ids][]','' %>       
     </div>
   </div>
 

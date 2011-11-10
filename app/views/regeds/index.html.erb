@@ -1,0 +1,23 @@
+<h1>Listing regeds</h1>
+
+<table>
+  <tr>
+    <th>Reason desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @regeds.each do |reged| %>
+  <tr>
+    <td><%= reged.reason_desc %></td>
+    <td><%= link_to 'Show', reged %></td>
+    <td><%= link_to 'Edit', edit_reged_path(reged) %></td>
+    <td><%= link_to 'Destroy', reged, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reged', new_reged_path %>

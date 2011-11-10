@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.xml
   def show
+    @regeds = Reged.all
     @graduateds = Graduated.all
     @notices = Notice.all
     @been2others = Been2other.all
@@ -36,6 +37,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   # GET /students/new.xml
   def new
+    @regeds = Reged.all
     @graduateds = Graduated.all
     @notices = Notice.all
     @been2others = Been2other.all
@@ -57,6 +59,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @regeds = Reged.all
     @graduateds = Graduated.all
     @notices = Notice.all
     @been2others = Been2other.all
@@ -74,6 +77,7 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.xml
   def create
+    @regeds = Reged.all
     @graduateds = Graduated.all
     @notices = Notice.all
     @been2others = Been2other.all
@@ -101,6 +105,7 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.xml
   def update
+    @regeds = Reged.all
     @graduateds = Graduated.all
     @notices = Notice.all
     @been2others = Been2other.all

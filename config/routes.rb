@@ -1,4 +1,8 @@
 Employee::Application.routes.draw do
+  resources :student_regedships
+
+  resources :regeds
+
   resources :student_graduatedships
 
   resources :graduateds
