@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem "nifty-generators", :group => :development
 #加上 mocha gems
 gem 'mocha'
+gem "squeel" #add squeel support
 
 # Use unicorn as the web server
 # gem 'unicorn'

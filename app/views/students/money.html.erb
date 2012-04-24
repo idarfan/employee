@@ -1,10 +1,10 @@
 <% content_for :header do %>
-<script>
-  jQuery(function($){
-    //alert("ewe");
-    $(".date_pick").datepicker();
-  })
-</script>
+  <script>
+    jQuery(function($){
+      //alert("ewe");
+      $(".date_pick").datepicker();
+    })
+  </script>
 <% end %>
 <form action="show_money" methods="get">
   <input type="text" name="start_at" value="<%= (Time.now - 1.year).strftime("%Y/%m/%d") %>" class="date_pick"/>
@@ -12,6 +12,11 @@
   <select name="level">
     <% @level.each do |level| %>
       <option value="<%= level[1] %>"><%= level[0] %></option>
+    <% end %>
+  </select>
+  <select name="grat">
+    <% @grat.each do |grat| %>
+      <option value="<%= grat[1] %>"><%= grat[0] %></option>
     <% end %>
   </select>
   <input type="submit" value="send"/>
