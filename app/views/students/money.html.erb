@@ -13,10 +13,15 @@
     <% @level.each do |level| %>
       <option value="<%= level[1] %>"><%= level[0] %></option>
     <% end %>
+  </select>  
+  <select name="howuknowu">
+    <% @howuknowu.each do |howuknowu| %>
+      <option value="<%= howuknowu[1] %>"><%= howuknowu[0] %></option>
+    <% end %>
   </select>
-  <select name="grat">
-    <% @grat.each do |grat| %>
-      <option value="<%= grat[1] %>"><%= grat[0] %></option>
+  <select name="whylearn">
+    <% @whylearn.each do |whylearn| %>
+      <option value="<%= whylearn[1] %>"><%= whylearn[0] %></option>
     <% end %>
   </select>
   <input type="submit" value="send"/>

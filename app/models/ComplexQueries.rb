@@ -1,6 +1,6 @@
 classComplexQueries<ActiveRecord::Base
   defself.my_query
-    # Notice how you can, and should, still sanitize params here. 
+    # Notice how you can, and should, still sanitize params here     
     self.connection.execute(sanitize_sql(["select * from foo limit ?",10]))
   end
 end

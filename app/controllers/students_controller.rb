@@ -145,31 +145,39 @@ class StudentsController < ApplicationController
   
   #加入學歷的選項
   def money
-    @level = Incomelevel.all.map{|im|[im.reason_desc , im.id]}
-    @grat = Graduated.all.map{|gr|[gr.reason_desc , gr.id]}
+    @level = Incomelevel.all.map{|im|[im.reason_desc , im.id]}    #test ok by rails c
+    @howuknowu = Howuknowu.all.map{|sh|[sh.reason_desc , sh.id]}  #test ok by rails c 
+    @whylearn = Whylearn.all.map{|sw|[sw.reason_desc , sw.id]}    #test ok by rails c
     render :layout =>"test_layout"
   end
-
-  def show_money
-    @graduateds = Graduated.all
+# @income_ids = Incomelevel.all.map{|i|i.to_i > 0 ? i.to_i : nil}.compact => for test only
+  def show_money    
     start_at = Time.parse(params[:start_at])
     end_at = Time.parse(params[:end_at])
-    level = params[:level].to_i
-    grat = params[:grat].to_i
-    @students = Student.all(:from => "student_incomelevelships AS si, AND student_graduatedships AS sg" ,
-      :conditions => ["si.incomelevel_id = ? AND sg.graduated_id = ?", level , grat] ,
-      :joins => "INNER JOIN
-        students ON (students.id = si.student_id AND students.id = sg.student_id AND
+    level = params[:level].to_i 
+    howuknowu = params[:howuknowu].to_i
+    whylearn = params[:whylearn].to_i
+    @income_ids = params['level'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @howuknowus_ids = params['howuknowu'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @whyulearn_ids = params['whylearn'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @students = Student.from('students AS s').joins("
+    INNER JOIN student_incomes AS si ON si.student_id = s.id AND si.income_id IN (#{@income_ids.join(',')})
+    INNER JOIN student_howyouknowus AS sh ON sh.student_id = s.id AND sh.howyouknowus_id IN (#{@howuknowus_ids.join(',')})
+    INNER JOIN student_whyyoulearn AS sw ON sw.student_id = s.id AND sw.whyyoulearn_id IN (#{@whyulearn_ids.join(',')})  
+    INNER JOIN students ON (students.id = si.student_id AND 
         students.created_at BETWEEN 
         DATE('#{start_at.strftime("%Y/%m/%d")}') AND
-        DATE('#{end_at.strftime("%Y/%m/%d")}'))")
-  end
-  #  @Student.includes(:whylearns, :student_incomelevelships).where
-  #  ("whylearns.reason_desc = ?",  "工作需要")
-  #  .where("student_incomelevelships.incomelevel_id = ?",
-  #    params[:level]).where("students.created_at between ? and ?",
-  #    params[:start_at], params[:end_at])
-  #end
+        DATE('#{end_at.strftime("%Y/%m/%d")}'))
+   ")
+
+   # @students = Student.all(:from => "student_incomelevelships AS si , AND student_graduatedships AS sg" ,
+   #   :conditions => [" si.incomelevel_id = ? AND sg.graduated_id = ? ", level , grat] ,
+   #   :joins => "INNER JOIN
+   #     students ON (students.id = si.student_id AND students.id = sg.student_id AND
+   #     students.created_at BETWEEN 
+   #     DATE('#{start_at.strftime("%Y/%m/%d")}') AND
+   #     DATE('#{end_at.strftime("%Y/%m/%d")}'))")
+  end  
  
   def student_id_check
     if Student.count(:conditions => ["student_id = ?" , params[:student][:student_id]]) == 0
