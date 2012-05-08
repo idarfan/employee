@@ -6,23 +6,12 @@
     })
   </script>
 <% end %>
-<form action="show_money" methods="get">
+<%= form_tag({:controller => "students", :action => "show_money"}, :method => "get" ) do %>
   <input type="text" name="start_at" value="<%= (Time.now - 1.year).strftime("%Y/%m/%d") %>" class="date_pick"/>
-  <input type="text" name="end_at" value="<%= Time.now.strftime("%Y/%m/%d") %>" class="date_pick"/>
-  <select name="level">
-    <% @level.each do |level| %>
-      <option value="<%= level[1] %>"><%= level[0] %></option>
-    <% end %>
-  </select>  
-  <select name="howuknowu">
-    <% @howuknowu.each do |howuknowu| %>
-      <option value="<%= howuknowu[1] %>"><%= howuknowu[0] %></option>
-    <% end %>
-  </select>
-  <select name="whylearn">
-    <% @whylearn.each do |whylearn| %>
-      <option value="<%= whylearn[1] %>"><%= whylearn[0] %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="send"/>
-</form>
+  <input type="text" name="end_at" value="<%= Time.now.strftime("%Y/%m/%d") %>" class="date_pick"/> 
+  <br /> 
+  <% Incomelevel.all.each do |income| %>
+    <%= check_box_tag "income_ids[]", income.id %> <%= income.reason_desc %>        
+  <% end %>  
+  <%= submit_tag value="send" %>
+<% end %>

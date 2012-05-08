@@ -145,38 +145,52 @@ class StudentsController < ApplicationController
   
   #加入學歷的選項
   def money
+    @regeds = Reged.all
+    @graduateds = Graduated.all
+    @notices = Notice.all
+    @been2others = Been2other.all
+    @incomelevels = Incomelevel.all
+    @mostneeds = Mostneed.all
+    @howuknowus = Howuknowu.all
+    @howcanimproves = Howcanimprove.all
+    @frequentmags = Frequentmag.all
+    @weeklyusages = Weeklyusage.all
+    @mostimportchoices = Mostimportchoice.all 
+    @whylearns = Whylearn.all     
     @level = Incomelevel.all.map{|im|[im.reason_desc , im.id]}    #test ok by rails c
     @howuknowu = Howuknowu.all.map{|sh|[sh.reason_desc , sh.id]}  #test ok by rails c 
     @whylearn = Whylearn.all.map{|sw|[sw.reason_desc , sw.id]}    #test ok by rails c
     render :layout =>"test_layout"
   end
-# @income_ids = Incomelevel.all.map{|i|i.to_i > 0 ? i.to_i : nil}.compact => for test only
-  def show_money    
+
+  def show_money
+    @regeds = Reged.all
+    @graduateds = Graduated.all
+    @notices = Notice.all
+    @been2others = Been2other.all
+    @incomelevels = Incomelevel.all
+    @mostneeds = Mostneed.all
+    @howuknowus = Howuknowu.all
+    @howcanimproves = Howcanimprove.all
+    @frequentmags = Frequentmag.all
+    @weeklyusages = Weeklyusage.all
+    @mostimportchoices = Mostimportchoice.all 
+    @whylearns = Whylearn.all        
     start_at = Time.parse(params[:start_at])
     end_at = Time.parse(params[:end_at])
-    level = params[:level].to_i 
-    howuknowu = params[:howuknowu].to_i
-    whylearn = params[:whylearn].to_i
-    @income_ids = params['level'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
-    @howuknowus_ids = params['howuknowu'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
-    @whyulearn_ids = params['whylearn'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    #level = params[:level].to_i
+    #howuknowu = params[:howuknowu].to_i
+    #whylearn = params[:whylearn].to_i
+    @incomes_ids = params['income_ids[]'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact    
     @students = Student.from('students AS s').joins("
-    INNER JOIN student_incomes AS si ON si.student_id = s.id AND si.income_id IN (#{@income_ids.join(',')})
+    INNER JOIN student_incomes AS si ON si.student_id = s.id AND si.income_id IN (#{@incomes_ids.join(',')})
     INNER JOIN student_howyouknowus AS sh ON sh.student_id = s.id AND sh.howyouknowus_id IN (#{@howuknowus_ids.join(',')})
     INNER JOIN student_whyyoulearn AS sw ON sw.student_id = s.id AND sw.whyyoulearn_id IN (#{@whyulearn_ids.join(',')})  
     INNER JOIN students ON (students.id = si.student_id AND 
         students.created_at BETWEEN 
         DATE('#{start_at.strftime("%Y/%m/%d")}') AND
         DATE('#{end_at.strftime("%Y/%m/%d")}'))
-   ")
-
-   # @students = Student.all(:from => "student_incomelevelships AS si , AND student_graduatedships AS sg" ,
-   #   :conditions => [" si.incomelevel_id = ? AND sg.graduated_id = ? ", level , grat] ,
-   #   :joins => "INNER JOIN
-   #     students ON (students.id = si.student_id AND students.id = sg.student_id AND
-   #     students.created_at BETWEEN 
-   #     DATE('#{start_at.strftime("%Y/%m/%d")}') AND
-   #     DATE('#{end_at.strftime("%Y/%m/%d")}'))")
+   ")  
   end  
  
   def student_id_check
