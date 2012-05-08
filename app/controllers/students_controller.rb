@@ -142,53 +142,28 @@ class StudentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  #加入學歷的選項
-  def money
-    @regeds = Reged.all
-    @graduateds = Graduated.all
-    @notices = Notice.all
-    @been2others = Been2other.all
-    @incomelevels = Incomelevel.all
-    @mostneeds = Mostneed.all
-    @howuknowus = Howuknowu.all
-    @howcanimproves = Howcanimprove.all
-    @frequentmags = Frequentmag.all
-    @weeklyusages = Weeklyusage.all
-    @mostimportchoices = Mostimportchoice.all 
-    @whylearns = Whylearn.all     
-    @level = Incomelevel.all.map{|im|[im.reason_desc , im.id]}    #test ok by rails c
-    @howuknowu = Howuknowu.all.map{|sh|[sh.reason_desc , sh.id]}  #test ok by rails c 
-    @whylearn = Whylearn.all.map{|sw|[sw.reason_desc , sw.id]}    #test ok by rails c
+    
+  def money    
+    #@level = Incomelevel.all.map{|im|[im.reason_desc , im.id]}    #test ok by rails c
+    #@howuknowu = Howuknowu.all.map{|sh|[sh.reason_desc , sh.id]}  #test ok by rails c 
+    #@whylearn = Whylearn.all.map{|sw|[sw.reason_desc , sw.id]}    #test ok by rails c
     render :layout =>"test_layout"
   end
 
-  def show_money
-    @regeds = Reged.all
-    @graduateds = Graduated.all
-    @notices = Notice.all
-    @been2others = Been2other.all
-    @incomelevels = Incomelevel.all
-    @mostneeds = Mostneed.all
-    @howuknowus = Howuknowu.all
-    @howcanimproves = Howcanimprove.all
-    @frequentmags = Frequentmag.all
-    @weeklyusages = Weeklyusage.all
-    @mostimportchoices = Mostimportchoice.all 
-    @whylearns = Whylearn.all        
+  def show_money    
     start_at = Time.parse(params[:start_at])
     end_at = Time.parse(params[:end_at])
     #level = params[:level].to_i
     #howuknowu = params[:howuknowu].to_i
     #whylearn = params[:whylearn].to_i   
     @income_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
-    @howuknowu_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
-    @whylearn_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @howuknowu_ids = params['howuknowu_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @whylearn_ids = params['whylearn_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
     @students = Student.from('students AS s').joins("
     INNER JOIN student_incomelevelships AS si ON si.student_id = s.id AND si.incomelevel_id IN (#{@income_ids.join(',')})
     INNER JOIN student_howuknowusships AS sh ON sh.student_id = s.id AND sh.howuknowu_id IN (#{@howuknowu_ids.join(',')})
     INNER JOIN student_whylearnships AS sw ON sw.student_id = s.id AND sw.whylearn_id IN (#{@whylearn_ids.join(',')})  
-    INNER JOIN students ON (students.id = si.student_id OR students.id = sh.student_id OR students.id = sw.student_id AND 
+    INNER JOIN students ON (students.id = si.student_id AND students.id = sh.student_id AND students.id = sw.student_id AND 
         students.created_at BETWEEN 
         DATE('#{start_at.strftime("%Y/%m/%d")}') AND
         DATE('#{end_at.strftime("%Y/%m/%d")}'))
