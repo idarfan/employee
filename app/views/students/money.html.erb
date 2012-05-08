@@ -12,6 +12,15 @@
   <br /> 
   <% Incomelevel.all.each do |income| %>
     <%= check_box_tag "income_ids[]", income.id %> <%= income.reason_desc %>        
-  <% end %>  
+  <% end %>
+    <br /> 
+  <% Howuknowu.all.each do | howuknowu| %>
+    <%= check_box_tag "howuknowu_ids[]", howuknowu.id %> <%= howuknowu.reason_desc %>        
+  <% end %>
+    <br /> 
+  <%  Whylearn.all.each do | whylearn| %>
+    <%= check_box_tag "whyulearn_ids[]", whylearn.id %> <%= whylearn.reason_desc %>        
+  <% end %>
+    <br />     
   <%= submit_tag value="send" %>
 <% end %>

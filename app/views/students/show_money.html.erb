@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <% @students.each do |s| %>
-  <%= s.id %> : <%= s.student_id %> : <%= "#{s.cname}#{s.ename}" %><br/>
+學生id: <%= s.student_id %> 學生姓名:<%= "#{s.cname} #{s.ename}" %> 電子郵件:<%= "#{s.email}" %><br/>
 <% end %>

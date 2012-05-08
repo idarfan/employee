@@ -180,13 +180,15 @@ class StudentsController < ApplicationController
     end_at = Time.parse(params[:end_at])
     #level = params[:level].to_i
     #howuknowu = params[:howuknowu].to_i
-    #whylearn = params[:whylearn].to_i
-    @incomes_ids = params['income_ids[]'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact    
+    #whylearn = params[:whylearn].to_i   
+    @income_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @howuknowu_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
+    @whylearn_ids = params['income_ids'].map{|i|i.to_i > 0 ? i.to_i : nil}.compact
     @students = Student.from('students AS s').joins("
-    INNER JOIN student_incomes AS si ON si.student_id = s.id AND si.income_id IN (#{@incomes_ids.join(',')})
-    INNER JOIN student_howyouknowus AS sh ON sh.student_id = s.id AND sh.howyouknowus_id IN (#{@howuknowus_ids.join(',')})
-    INNER JOIN student_whyyoulearn AS sw ON sw.student_id = s.id AND sw.whyyoulearn_id IN (#{@whyulearn_ids.join(',')})  
-    INNER JOIN students ON (students.id = si.student_id AND 
+    INNER JOIN student_incomelevelships AS si ON si.student_id = s.id AND si.incomelevel_id IN (#{@income_ids.join(',')})
+    INNER JOIN student_howuknowusships AS sh ON sh.student_id = s.id AND sh.howuknowu_id IN (#{@howuknowu_ids.join(',')})
+    INNER JOIN student_whylearnships AS sw ON sw.student_id = s.id AND sw.whylearn_id IN (#{@whylearn_ids.join(',')})  
+    INNER JOIN students ON (students.id = si.student_id OR students.id = sh.student_id OR students.id = sw.student_id AND 
         students.created_at BETWEEN 
         DATE('#{start_at.strftime("%Y/%m/%d")}') AND
         DATE('#{end_at.strftime("%Y/%m/%d")}'))
