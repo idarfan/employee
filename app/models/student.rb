@@ -3,6 +3,8 @@ class Student < ActiveRecord::Base
   #採用過濾器
   before_save :fix_cname
   #使用私有方法 fix_cname
+scope :teenagers, where(" year(birthday) > 1968 and year(birthday) < 1990 ")
+scope :by_name, order(:ename)
   private
   def fix_cname
     self.cname = self.cname.gsub(/[\w\s\b\$[:punct:]]/ , '')

@@ -21,6 +21,13 @@ Employee::Application.routes.draw do
 
   resources :notices
 
+  resources :contact_us do | contact_us |
+    collection do
+      get :new
+      get :send_email
+    end
+  end
+
   resources :students do |student|
     collection do
       get :money
